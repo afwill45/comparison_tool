@@ -30,11 +30,7 @@ And create paramters for platform
 
 client = OpenAI()
 completion = client.chat.completions.create(
-<<<<<<< HEAD
-  model=model_use,
-=======
-  model= model_use
->>>>>>> 12f8a68d7c1dc70f25e22cdcb299adb14aee5dcf
+  model= model_use,
   messages=[
     {"role": "system", "content": "You are a poetic assistant, skilled in explaining complex programming concepts with creative flair."},
     {"role": "user", "content": "Compose a poem that explains the concept of recursion in programming."}
