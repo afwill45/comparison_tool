@@ -5,7 +5,6 @@ import os
 import re
 
 
-print("testing commits")
 model_use = "gpt-3.5-turbo"
 platform = "OpenAI"
 model_choices = ["gpt-3.5-turbo", "3.5", "gpt-4o", "4o", "gpt-4-turbo", "4"]
@@ -14,7 +13,6 @@ parser = argparse.ArgumentParser()
 parser.add_argument("-m", "--model", help="The OpenAI model", choices=model_choices)
 args = parser.parse_args()
 
-print(f"Arguments received: {args}")
 
 if platform == "OpenAI":
     if (args.model == "gpt-4o") or (args.model == "4o"):
@@ -22,7 +20,6 @@ if platform == "OpenAI":
     elif (args.model == "gpt-4-turbo") or (args.model == "4"):
         model_use = "gpt-4-turbo"
 
-print(f"Model selected: {model_use}")
 
 '''
 When integration for other platforms like Anthropic's Claude and Google Gemini
@@ -40,11 +37,14 @@ completion = client.chat.completions.create(
 )
 end_time = int(time.time())
 start_time = completion.created
-print(completion.choices[0].message)
+response_length = len(completion.choices[0].message.content)
+elapsed_time =  end_time - start_time
+print(completion.choices[0].message.content)
 
-print("Elapsed time = ", end_time - start_time) 
-
+print("Elapsed time = ", elapsed_time) 
+print("Normalized time = ", response_length/elapsed_time)
+print("Model = ", model_use)
 '''
 Count the number of words or tokens produced by the model. Divide the no. of words/tokens by the elapsed time.
-This will normalize the
+This will normalize the results. We want speed of delivery.
 '''
