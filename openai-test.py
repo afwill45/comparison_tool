@@ -41,8 +41,10 @@ response_length = len(completion.choices[0].message.content)
 elapsed_time =  end_time - start_time
 print(completion.choices[0].message.content)
 
+print("")
 print("Elapsed time = ", elapsed_time) 
-print("Normalized time = ", response_length/elapsed_time)
+print("Normalized score = ", response_length/elapsed_time)
+print("Response length = ", response_length)
 print("Model = ", model_use)
 '''
 Count the number of words or tokens produced by the model. Divide the no. of words/tokens by the elapsed time.
