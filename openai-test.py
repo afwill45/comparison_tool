@@ -4,6 +4,8 @@ import argparse
 import os
 import re
 
+
+print("testing commits")
 model_use = "gpt-3.5-turbo"
 platform = "OpenAI"
 model_choices = ["gpt-3.5-turbo", "3.5", "gpt-4o", "4o", "gpt-4-turbo", "4"]
