@@ -4,16 +4,21 @@ import argparse
 import os
 import re
 
-
+#Declare default model, AI provider and OpenAI model options
 model_use = "gpt-3.5-turbo"
 platform = "OpenAI"
 model_choices = ["gpt-3.5-turbo", "3.5", "gpt-4o", "4o", "gpt-4-turbo", "4"]
 
+#Initialize the command line input parser
 parser = argparse.ArgumentParser()
+
+#Add the optional argument for a model. If one is not specified the default value will be used
 parser.add_argument("-m", "--model", help="The OpenAI model", choices=model_choices)
+
+#Parse the inputs
 args = parser.parse_args()
 
-
+#Change the value for the model depending on the command line input. If a value is not recognized, defaults to default value"
 if platform == "OpenAI":
     if (args.model == "gpt-4o") or (args.model == "4o"):
         model_use = "gpt-4o"
@@ -27,14 +32,17 @@ Increase the model choices to account for them as well
 And create parameters for platform
 '''
 
+#Initializes OpenAI API
 client = OpenAI()
 completion = client.chat.completions.create(
+  #Selects OPENAI model based on command line inputs
   model= model_use,
   messages=[
     {"role": "system", "content": "You are a poetic assistant, skilled in explaining complex programming concepts with creative flair."},
     {"role": "user", "content": "Compose a poem that explains the concept of recursion in programming."}
   ]
 )
+
 end_time = int(time.time())
 start_time = completion.created
 response_length = len(completion.choices[0].message.content)
