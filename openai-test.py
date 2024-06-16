@@ -8,25 +8,25 @@ model_use = "gpt-3.5-turbo"
 platform = "OpenAI"
 model_choices = ["gpt-3.5-turbo", "3.5", "gpt-4o", "4o", "gpt-4-turbo", "4"]
 
-
 parser = argparse.ArgumentParser()
-parser.parse_args()
-parser.add_argument("-m", "--model", help="The OpenAI model", choices = model_choices)
+parser.add_argument("-m", "--model", help="The OpenAI model", choices=model_choices)
 args = parser.parse_args()
+
+print(f"Arguments received: {args}")
+
 if platform == "OpenAI":
-  if (args.model == "gpt-4o") or (args.model == "4o"):
-    model_use = "gpt-4o"
-  elif(args.model == "gpt-4-turbo") or (args.model == "4"):
-    model_use = "gpt-4-turbo"
+    if (args.model == "gpt-4o") or (args.model == "4o"):
+        model_use = "gpt-4o"
+    elif (args.model == "gpt-4-turbo") or (args.model == "4"):
+        model_use = "gpt-4-turbo"
+
+print(f"Model selected: {model_use}")
+
 '''
-When integration for other platforms like Anthrophic's Claude and Google Gemini
+When integration for other platforms like Anthropic's Claude and Google Gemini
 Increase the model choices to account for them as well
-And create paramters for platform
+And create parameters for platform
 '''
-    
-    
-
-
 
 client = OpenAI()
 completion = client.chat.completions.create(
